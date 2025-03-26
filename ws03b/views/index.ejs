@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS sivu</title>
+</head>
+<body>
+    <%- include('_header') %>
+
+    <h1><%= message %></h1>
+
+    <% if (users && users.length > 0) { %>
+        <h2>Käyttäjät</h2>
+        <ul>
+            <% users.forEach(user => { %>
+                <li>
+                    <strong>Nimi:</strong> <%= user.name %> <br>
+                    <strong>Sähköposti:</strong> <%= user.email %>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>Käyttäjiä ei löytynyt</p>
+    <% } %>
+
+    <% if (isLoggedIn) { %>
+        <p>Tervetuloa takaisin</p>
+    <% } else { %>
+        <p>Kirjaudu sisään kiitos.</p>
+    <% } %>
+
+    <%- include('_footer') %>
+</body>
+</html>
